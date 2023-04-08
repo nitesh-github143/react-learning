@@ -10,7 +10,15 @@ function App() {
     <div className="App">
       <div>
         <button onClick={() => {
-          setVideos([])
+          setVideos([...videos, {
+            id: videos.length + 1,
+            title: 'Demo JS tutorial',
+            views: '20K',
+            time: '3 month ago',
+            channel: 'Coder Dost',
+            verified: false
+
+          }])
         }}>Add VIdeo</button>
       </div>
       <div className='video' onClick={() => console.log('hi')}>
