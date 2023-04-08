@@ -1,44 +1,37 @@
 import './App.css';
 import Video from './components/Video';
+import Playbutton from './components/Playbutton';
+import videoDB from './Data/Data';
+import { useState } from 'react';
 
 function App() {
-  let videos = [
-    {
-      id: 1,
-      title: 'React JS tutorial',
-      views: '999K',
-      time: '1 year ago',
-      channel: 'Coder Dost',
-      verified: true
-    }, {
-      id: 2,
-      title: 'Node JS tutorial',
-      views: '100K',
-      time: '1 month ago',
-      channel: 'Coder Dost',
-      verified: false
-    }, {
-      id: 3,
-      title: 'Mongo DB tutorial',
-      views: '1M',
-      time: '1 month ago',
-      channel: 'Coder Dost',
-      verified: true
-    }
-  ];
+  const [videos, setVideos] = useState(videoDB)
   return (
     <div className="App">
-      {
-        videos.map(video => <Video
-          id={video.id}
-          title={video.title}
-          views={video.views}
-          time={video.time}
-          channel={video.channel}
-          verified={video.verified}
-        ></Video>
-        )
-      }
+      <div>
+        <button onClick={() => {
+          setVideos([])
+        }}>Add VIdeo</button>
+      </div>
+      <div className='video' onClick={() => console.log('hi')}>
+        {
+          videos.map(video => <Video
+            key={video.id}
+            id={video.id}
+            title={video.title}
+            views={video.views}
+            time={video.time}
+            channel={video.channel}
+            verified={video.verified}
+          >
+            <Playbutton
+              onPlay={() => console.log('playing', video.title)}
+              onPause={() => console.log('Paused', video.title)}
+            >{video.title}</Playbutton>
+          </Video>
+          )
+        }
+      </div>
     </div>
   );
 }
