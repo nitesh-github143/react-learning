@@ -3,24 +3,20 @@ import Video from './components/Video';
 import Playbutton from './components/Playbutton';
 import videoDB from './Data/Data';
 import { useState } from 'react';
+import AddVideo from './components/AddVideo';
 
 function App() {
   const [videos, setVideos] = useState(videoDB)
+
+  function addVideos(video) {
+    setVideos([...videos, {
+      ...video,
+      id: videos.length + 1
+    }])
+  }
   return (
     <div className="App">
-      <div>
-        <button onClick={() => {
-          setVideos([...videos, {
-            id: videos.length + 1,
-            title: 'Demo JS tutorial',
-            views: '20K',
-            time: '3 month ago',
-            channel: 'Coder Dost',
-            verified: false
-
-          }])
-        }}>Add VIdeo</button>
-      </div>
+      <AddVideo addVideos={addVideos}></AddVideo>
       <div className='video' onClick={() => console.log('hi')}>
         {
           videos.map(video => <Video
