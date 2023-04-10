@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './Playbutton.css'
+import './PlayButton.css'
 
-export default function Playbutton({ message, children, onPlay, onPause }) {
+export default function PlayButton({ message, children, onPlay, onPause }) {
 
     const [playing, setPlaying] = useState(false)
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Video from './Video'
-import Playbutton from './Playbutton';
+import PlayButton from './PlayButton';
 
 const VideoList = ({ videos }) => {
     return (
@@ -15,10 +15,10 @@ const VideoList = ({ videos }) => {
                     channel={video.channel}
                     verified={video.verified}
                 >
-                    <Playbutton
+                    <PlayButton
                         onPlay={() => console.log('playing', video.title)}
                         onPause={() => console.log('Paused', video.title)}
-                    >{video.title}</Playbutton>
+                    >{video.title}</PlayButton>
                 </Video>
                 )
             }
