@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './AddVideo.css'
+import VideoDispatch from '../context/VideoDispatch'
 
 const initialState = {
     time: '3 month ago',
@@ -9,7 +10,8 @@ const initialState = {
     views: ''
 }
 
-const AddVideo = ({ dispatch, editableVideo }) => {
+const AddVideo = ({ editableVideo }) => {
+    const dispatch = useContext(VideoDispatch)
     const [video, setVideo] = useState({ ...initialState })
     function handleSubmit(e) {
         e.preventDefault()

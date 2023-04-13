@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import './PlayButton.css'
+import './PlayButton.css';
+import { useContext, useState } from 'react';
+import ThemeContext from '../context/ThemeContext';
 
-export default function PlayButton({ message, children, onPlay, onPause }) {
+function PlayButton({ message, children, onPlay, onPause }) {
+    console.log('render PlayButton')
+    const theme = useContext(ThemeContext)
 
-    const [playing, setPlaying] = useState(false)
-
+    const [playing, setPlaying] = useState(false);
     function handleClick(e) {
+        // console.log(e)
         e.stopPropagation()
-        if (playing) {
-            onPause()
-        } else {
-            onPlay()
-        }
-        setPlaying(!playing)
+
+        if (playing) onPause()
+        else onPlay();
+
+        setPlaying(!playing);
     }
 
     return (
-        <div>
-            <button onClick={handleClick}>{children} {playing ? '||' : '>'}</button>
-        </div>
+        <button className={theme} onClick={handleClick}>{children} : {playing ? '⏸️' : '⏯️'}</button>
     )
+
 }
+
+export default PlayButton;

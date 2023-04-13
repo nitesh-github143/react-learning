@@ -1,11 +1,12 @@
 .App {
-  background-color: #282c34;
   width: 100%;
-  min-height: 100vh;
-  color: white;
+  height: 100vh;
 }
 
-.video {
-  display: flex;
-  flex-wrap: wrap;
+.darkMode {
+  background-color: #282c34;
+}
+
+.lightMode {
+  background-color: #ccc;
 }

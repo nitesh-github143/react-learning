@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton';
+import VideosContext from '../context/VideoContext';
 
-const VideoList = ({ videos, dispatch, editVideo }) => {
+const VideoList = ({ editVideo }) => {
+    const videos = useContext(VideosContext)
     return (
         <div className='video'>
             {
@@ -14,7 +16,6 @@ const VideoList = ({ videos, dispatch, editVideo }) => {
                     time={video.time}
                     channel={video.channel}
                     verified={video.verified}
-                    dispatch={dispatch}
                     editVideo={editVideo}
                 >
                     <PlayButton
