@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
 import Video from './Video'
 import PlayButton from './PlayButton';
-import VideosContext from '../context/VideoContext';
+import useVideo from '../Hooks/Videos';
 
 const VideoList = ({ editVideo }) => {
-    const videos = useContext(VideosContext)
+    const videos = useVideo()
     return (
         <div className='video'>
             {
